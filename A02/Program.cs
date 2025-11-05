@@ -8,12 +8,12 @@
 using static System.Console;
 
 int num = new Random ().Next (1, 101);
-for (; ; ) {
+bool found = false;
+while (!found) {
    Write ("Guess a number between 1 to 100: ");
    if (!int.TryParse (ReadLine (), out int guess)) {
       WriteLine ("Invalid input. Please enter a valid number."); continue;
    }
-   bool found = (num == guess);
-   WriteLine (found ? "You got it right!" : $"Your guess is {(num > guess ? "low" : "high")}");
-   if (found) break;
+   found = num == guess;
+   WriteLine ($"Your guess is {(found ? "correct!" : (num > guess ? "low" : "high"))}");
 }

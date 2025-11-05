@@ -13,6 +13,7 @@ for (; ; ) {
    if (!int.TryParse (ReadLine (), out int guess)) {
       WriteLine ("Invalid input. Please enter a valid number."); continue;
    }
-   if (num == guess) {WriteLine ("You got it right!"); break; }
-   WriteLine ($"Your guess is {(num > guess ? "low" : "high")}");
+   bool found = (num == guess);
+   WriteLine (found ? "You got it right!" : $"Your guess is {(num > guess ? "low" : "high")}");
+   if (found) break;
 }

@@ -15,13 +15,15 @@ static int GetBinaryNum (string prompt) {
    int sum = 0, baseVal = 2, rem = 1;
    for (int i = 0; i < 7; i++) {
       ConsoleKeyInfo key;
+      bool invalid;
       do {
          Write ($"If the number is divided by {baseVal}, is the remainder less than {rem}? (Y/N): ");
          key = ReadKey ();
          WriteLine ();
-         if (key.Key != ConsoleKey.Y && key.Key != ConsoleKey.N)
+         invalid = key.Key != ConsoleKey.Y && key.Key != ConsoleKey.N;
+         if (invalid)
             WriteLine ("Invalid Input.Enter 'Y' or 'N' only.");
-      } while (key.Key != ConsoleKey.Y && key.Key != ConsoleKey.N);
+      } while (invalid);
       sum |= (key.Key == ConsoleKey.Y ? 0 : 1) << i;
       baseVal *= 2;
       rem *= 2;

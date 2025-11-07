@@ -5,7 +5,6 @@
 // Program.cs
 // Program guesses the number thought by the user by prompting seven questions.
 // ------------------------------------------------------------------------------------------------
-using System.Globalization;
 using static System.Console;
 
 GetBinaryNum ("Think of a number between 1 to 127 and I will guess it.");

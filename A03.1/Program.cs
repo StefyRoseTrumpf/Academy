@@ -5,6 +5,7 @@
 // Program.cs
 // Program guesses the number thought by the user by prompting seven questions.
 // ------------------------------------------------------------------------------------------------
+using System.Globalization;
 using static System.Console;
 
 GetBinaryNum ("Think of a number between 1 to 127 and I will guess it.");
@@ -15,13 +16,13 @@ static int GetBinaryNum (string prompt) {
    int sum = 0, baseVal = 2, rem = 1;
    for (int i = 0; i < 7; i++) {
       ConsoleKeyInfo key;
-      while (true) {
-         Write ($"If the number is divided by {baseVal} it's remainder is less than {rem}? (Y/N): ");
+      do {
+         Write ($"If the number is divided by {baseVal}, is the remainder less than {rem}? (Y/N): ");
          key = ReadKey ();
          WriteLine ();
-         if (key.Key == ConsoleKey.Y || key.Key == ConsoleKey.N) break;
-         WriteLine ("Invalid Input.Enter 'Y' or 'N' only.");
-      }
+         if (key.Key != ConsoleKey.Y && key.Key != ConsoleKey.N)
+            WriteLine ("Invalid Input.Enter 'Y' or 'N' only.");
+      } while (key.Key != ConsoleKey.Y && key.Key != ConsoleKey.N);
       sum |= (key.Key == ConsoleKey.Y ? 0 : 1) << i;
       baseVal *= 2;
       rem *= 2;
